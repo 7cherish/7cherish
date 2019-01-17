@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>03_HelloMVC</display-name>
+  <description>
+  – ServletContext : 어느 서블릿 객체에서든 접근 가능한 String을 저장한다. (READ or WRITE 가능)
+  – ServletConfig : 특정 서블릿 객체에서만 접근 가능한 String을 저장한다. (READ만 가능)
+  – session-config : 30분설정
+  – Welcome File list : 도메인으로만 접근하였을때 최초로 보여질 페이지를 지정한다.
+  
+  </description>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <description>-----Session이 유지되는 시간 설정-----</description>
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+  <description>Listener : 어떠한 이벤트가 발생하면 호출되어 처리하는 객체로 인터페이스만 제공되므로 클래스는 직접 구현해야한다.</description>
+  <listener>
+    <listener-class>com.kh.common.listener.SessionCounterListener</listener-class>
+  </listener>
+  <description>-----jsp연결-----</description>
+ <!--  <servlet>
+    <servlet-name>MemberEnrollServlet</servlet-name>
+    <jsp-file>/WEB-INF/views/member/memberEnroll.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberEnrollServlet</servlet-name>
+    <url-pattern>/member/memberEnroll</url-pattern>
+  </servlet-mapping> -->
+  <servlet>
+    <servlet-name>MemberUpdatePasswordServlet</servlet-name>
+    <jsp-file>/WEB-INF/views/member/updatePassword.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberUpdatePasswordServlet</servlet-name>
+    <url-pattern>/member/updatePassword</url-pattern>
+  </servlet-mapping>
+  <description>Filter : HTTP요청과 응답을 변경할 수 있는 재사용가능한 코드로 클라이언트와 서블릿 사이에 위치하여 request 과 response값을 알맞게 변경 할 수있게 한다.</description>
+  <filter>
+    <filter-name>LoggerFilter</filter-name>
+    <filter-class>com.kh.common.filter.LoggerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoggerFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>EncodeFilter</filter-name>
+    <filter-class>com.kh.common.filter.EncodeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodeFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <description>error-page : error-code, exception-type, location</description>
+  <error-page>
+  	<location>/WEB-INF/views/common/error.jsp</location>
+  </error-page>
+  <resource-ref>
+  	<description>Oracle DataSource</description>
+  	<res-ref-name>jdbc/myoracle</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
+  
+</web-app>
