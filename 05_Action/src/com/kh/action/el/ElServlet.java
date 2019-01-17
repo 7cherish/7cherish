@@ -45,11 +45,17 @@ public class ElServlet extends HttpServlet {
 		request.setAttribute("items", items);
 		
 		HttpSession session = request.getSession();
+		// session객체에 동일한 이름의 coffee라고 속성 저장
 		session.setAttribute("coffee", "예가체프");
 		
-		// applicationScope -> servletContext
+		// applicationScope(jsp에서 부르는 이름) -> servletContext(servlet에서 부르는 이름)
+		// applicationScope 프로그램시작하면서부터 종료될때까지 살아있다.
 		ServletContext application = request.getServletContext();
 		application.setAttribute("coffee", "옐로버번");
+		
+		// 생존범위(jsp)
+		// page(서블릿에서는 없다) < request < session < application
+		// 현재 EL 내장객체 스코프마다 동일한 이름인 coffee라고 속성을 저장해줬다.
 		
 		String view = "/el/elView.jsp";
 		request.getRequestDispatcher(view).forward(request, response);
