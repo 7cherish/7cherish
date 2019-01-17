@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>01_HelloWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 서블릿 등록 -->
+	<servlet>
+		<servlet-name>testPerson1Servlet</servlet-name>
+		<servlet-class>com.kh.servlet.TestPerson1Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testPerson1Servlet</servlet-name>
+		<url-pattern>/testPerson1.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 서블릿 등록 -->
+	<servlet>
+		<servlet-name>testPerson2Servlet</servlet-name>
+		<servlet-class>com.kh.servlet.TestPerson2Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testPerson2Servlet</servlet-name>
+		<url-pattern>/testPerson2.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 서블릿 등록 -->
+	<servlet>
+		<servlet-name>testPerson3Servlet</servlet-name>
+		<servlet-class>com.kh.servlet.TestPerson3Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testPerson3Servlet</servlet-name>
+		<url-pattern>/testPerson3.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 메뉴서블릿 등록 -->
+	<servlet>
+  	<servlet-name>menuOrderServlet</servlet-name>
+  	<servlet-class>com.kh.servlet.MenuOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>menuOrderServlet</servlet-name>
+  	<!-- form의 action이 들어간다. -->
+  	<url-pattern>/menuOrder.do</url-pattern>
+  </servlet-mapping>
+</web-app>

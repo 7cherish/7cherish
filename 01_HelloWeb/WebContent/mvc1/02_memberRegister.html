@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style>
+body{
+	text-align: center;
+}
+
+input[type=text], input[type=password], 
+input[type=email], input[type=tel]{
+	margin-bottom: 5px;
+}  
+</style>
+</head>
+<body>
+	<h2>회원가입</h2>
+	<br />
+	<form action="02_memberRegisterEnd.jsp" method="post">
+		<input type="text" 
+			   name="memberId" 
+			   id="memberId" 
+			   placeholder="아이디"/>
+		<br />
+		<input type="password"
+			   name="password"
+			   id="password"
+			   placeholder="패스워드" />
+		<br />
+		<input type="text"
+			   name="memberName"
+			   id="memberName"
+			   placeholder="이름" />
+		<br />
+		<input type="number"
+			   name="age"
+			   id="age"
+			   placeholder="나이" />
+		<br />
+		<input type="email"
+			   name="email" 
+			   id="email"
+			   placeholder="이메일" />
+		<br />
+		<input type="tel"
+			   name="phone" 
+			   id="phone"
+			   placeholder="전화번호" />
+		<br />
+		<input type="text"
+			   name="address" 
+			   id="address"
+			   placeholder="주소" />
+		<br />
+		성별 :
+		<label for="gender1">남</label>
+		<input type="radio" 
+			   name="gender" 
+			   id="gender1"
+			   value="M" />
+		<label for="gender2">여</label>
+		<input type="radio" 
+			   name="gender" 
+			   id="gender2"
+			   value="F" />
+		<br />
+		취미 :
+		<label for="hobby1">운동</label>
+		<input type="checkbox" 
+			   name="hobby" 
+			   id="hobby1" 
+			   value="운동"/>
+		<label for="hobby2">등산</label>
+		<input type="checkbox" 
+			   name="hobby" 
+			   id="hobby2" 
+			   value="등산"/>
+		<label for="hobby3">독서</label>
+		<input type="checkbox" 
+			   name="hobby" 
+			   id="hobby3" 
+			   value="독서"/>
+		<label for="hobby4">게임</label>
+		<input type="checkbox" 
+			   name="hobby" 
+			   id="hobby4" 
+			   value="게임"/>
+		<label for="hobby5">여행</label>
+		<input type="checkbox" 
+			   name="hobby" 
+			   id="hobby5" 
+			   value="여행"/>
+		<br /><br />
+		<input type="submit" value="회원가입" />
+	</form>
+
+</body>
+</html>
