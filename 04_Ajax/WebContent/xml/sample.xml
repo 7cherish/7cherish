@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+일단 CDATA가 무슨 뜻이냐 하면, 그것은 바로 'Character Data'. 
+즉, '문자 데이터'를 말하는 것입니다. 
+그런데 이 용어를 좀 더 정확하게 말하면 '(Unparsed) Character Data'. 
+즉, '파싱하지 않는 문자 데이터'라는 뜻입니다. 
+반대로, 파싱하는 문자 데이터는 'PCDATA'라고 부릅니다.
+ -->
+<books>
+	<book>
+		<subject>소설</subject>
+		<title>해질무렵</title>
+		<author>황석영</author>
+	</book>
+	<book>
+		<subject>소설</subject>
+		<title>마션</title>
+		<author>앤디위어</author>
+	</book>
+	<book>
+		<subject>소설</subject>
+		<title>어린왕자</title>
+		<author>생떽쥐베리</author>
+	</book>
+	<book>
+		<subject>소설</subject>
+		<title>당신</title>
+		<author>박범신</author>
+	</book>
+	<book>
+		<subject>프로그래밍</subject>
+		<title>Oracle</title>
+		<author>이순신</author>
+	</book>
+	<book>
+		<subject>프로그래밍</subject>
+		<title>자바</title>
+		<author>안중근</author>
+	</book>
+	<book>
+		<subject>프로그래밍</subject>
+		<title><![CDATA[JSP & Servlet]]></title>
+		<author>세종대왕</author>
+	</book>
+</books>

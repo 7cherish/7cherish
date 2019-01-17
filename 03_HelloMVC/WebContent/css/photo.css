@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/*사진리스트*/
+section#photoList-container{
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+section#photoList-container h2{
+	margin: 10px 0;
+}
+
+/*더보기 버튼*/
+div#btn-more-container button#btn-more{
+	float: right;
+	margin: 0 0 15px;
+}
+
+/*사진*/
+.polaroid{
+	margin: 10px auto;
+	width: 300px;
+	background-color: #fff;
+	box-shadow: 2px 2px 3px rgba(135, 139, 133, 0.4);
+	transition: .5s;
+}
+
+.polaroid:hover{
+	box-shadow: 10px 10px 8px rgba(135, 139, 133, 0.4);
+}
+
+p.info{
+	text-align: left;
+	margin: 0;
+}
+
+span.writer{
+	font-weight: bold;
+	font-size: 8px;
+}
+
+span.photoDate{
+	font-size: 6px;
+}
