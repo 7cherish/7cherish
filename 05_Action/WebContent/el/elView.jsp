@@ -21,6 +21,7 @@
 </head>
 <body>
 	<h2>EL(Expression Language)</h2>
+	다들 바뀌나 테스트
 	<!-- 
 	EL에서 사용가능한 내장객체
 	괄호로 묶어놓은 스코프는 생략 가능
