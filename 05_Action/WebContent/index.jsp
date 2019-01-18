@@ -17,6 +17,8 @@ li{
 
 a{
 	text-decoration: none;
+	color: gray;
+	font-size: 13pt;
 }
 </style>
 </head>
@@ -42,6 +44,7 @@ a{
 		<li><a href="custom/04_chooseEnd.jsp">04_chooseEnd.jsp</a></li>
 		<li><a href="custom/05_forEach.jsp">05_forEach.jsp</a></li>
 		<li><a href="custom/06_fmt.jsp">06_fmt.jsp</a></li>
+		<li><a href="custom/07_fn.jsp">07_fn.jsp</a></li>
 	</ul>
 </body>
 </html>
