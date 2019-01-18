@@ -23,7 +23,14 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 		0 : 해당 자리수가 없어도 0으로 치환
 	</p>
 	# : <fmt:formatNumber value="123.456" pattern="#.#####" /> <br />
-	0 : <fmt:formatNumber value="123.456" pattern="0.00000" />
+	0 : <fmt:formatNumber value="123.456" pattern="0.00000" /> <br />
+	
+	<p>숫자 : 천자리 단위 콤마 찍기</p>
+	<fmt:formatNumber value="123456789" groupingUsed="true" /> <br />
+	<p>type속성을 통한 백분율, 통화표시</p>
+	<!-- type - persent : value를 퍼센트 단위로 환산해서 보여준다. -->
+	<fmt:formatNumber value="0.12" type="percent"/> <br />
+	<fmt:formatNumber value="123456789" type="currency" currencySymbol="\\"/> <br />
 	
 <!-- 
 	숫자1 : <fmt:formatNumber value="123456789" type="number"/><br>
