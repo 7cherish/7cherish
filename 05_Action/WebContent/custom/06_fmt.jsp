@@ -27,10 +27,24 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 	
 	<p>숫자 : 천자리 단위 콤마 찍기</p>
 	<fmt:formatNumber value="123456789" groupingUsed="true" /> <br />
+	
 	<p>type속성을 통한 백분율, 통화표시</p>
 	<!-- type - persent : value를 퍼센트 단위로 환산해서 보여준다. -->
 	<fmt:formatNumber value="0.12" type="percent"/> <br />
 	<fmt:formatNumber value="123456789" type="currency" currencySymbol="\\"/> <br />
+	
+	<p>지역대설정을 통한 원화표시(영문버전 설치된 OS에서 필수)</p>
+	<fmt:setLocale value="ko_kr"/>
+	
+	
+	<h3>날짜/시간</h3>
+	<!-- 최상단에 하나 두면 밑에서 날짜나 시간정보 얻을때 꺼내 쓰기 편해진다. -->
+	<c:set var="today" value="<%=new java.util.Date() %>" />
+	오늘 날짜 : <fmt:formatDate value="${today }" type="date"/> <br />
+	현재 시간 : <fmt:formatDate value="${today }" type="time"/> <br />
+	날짜 시간 : <fmt:formatDate value="${today }" type="both"/> <br />
+	yy/MM/dd(E) : <fmt:formatDate value="${today }" type="date" pattern="yy/MM/dd(E)"/> <br />
+	hh:mm:ss : <fmt:formatDate value="${today }" type="time" pattern="hh:mm:ss"/> <br />
 	
 <!-- 
 	숫자1 : <fmt:formatNumber value="123456789" type="number"/><br>
