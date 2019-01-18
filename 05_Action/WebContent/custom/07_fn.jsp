@@ -26,14 +26,13 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 	문자열 길이 : ${fn:length(str) }
 	
 <!-- 
- 
-Function, 함수
+<%-- 	Function, 함수
 
 기능 : 컬렉션 처리,  String 처리
 
 접두어(Prefix) : fn
 
-directive : <%-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
+directive : <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 
@@ -119,9 +118,9 @@ ${fn:replace("hell            o          o       ~", " ", "&nbsp;")} // hell    
 
 
 
-<%-- <% pageContext.setAttribute("enter","\n"); %> --%>
+<% pageContext.setAttribute("enter","\n"); %>
 
-${fn:replace(info.text, enter, '<br/>') // 엔터처리
+${fn:replace(info.text, enter, '<br/>') 엔터처리
 
 
 
@@ -169,11 +168,8 @@ ${fn:length(text)}  // 31
 
  
 
-${fn:length(text)}  // 1
-
-
-
+${fn:length(text)}  // 1 --%>
  -->
-	
 </body>
 </html>
+
