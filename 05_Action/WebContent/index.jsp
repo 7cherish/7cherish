@@ -10,40 +10,33 @@ body {
 	margin: -100px auto;
 	text-align: center;
 }
-
 h1{
 	position: relative;
 	top: 160px;
 	font-size: 50px;
 	cursor: pointer;
 }
-
 h2{
 	margin: 0px auto;
 	text-align: center;
 }
-
 ul{
 	margin: 0px auto;
 	text-align: center;
 }
-
 li {
 	margin: 7px auto;
 	list-style-type: none;
 	padding: 0px 10px;
 }
-
 a {
 	text-decoration: none;
 	color: gray;
 	font-size: 13pt;
 }
-
 a:hover {
 	color: red;
 }
-
 #wrapper{
 	padding: 34px 36px 44px 17px;
 	border: 1px solid;
@@ -51,7 +44,6 @@ a:hover {
 	width: 500px;
 	margin: 200px auto;
 }
-
 #Action_EL{
 	margin-top: 10px;
 }
