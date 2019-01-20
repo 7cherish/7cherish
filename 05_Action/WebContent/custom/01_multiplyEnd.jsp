@@ -33,7 +33,6 @@
 	<c:set var="result" value="${no1 * no2}" scope="request" />
 	
 	<h3>계산</h3>
-	p
 	${no1}와 ${no2}의 곱은? ${result}
 	<br />
 	<c:out value="${no1}" />와
