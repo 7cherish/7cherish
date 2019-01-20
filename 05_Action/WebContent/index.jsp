@@ -7,7 +7,7 @@
 <title>INDEX</title>
 <style>
 body {
-	margin: 0px auto;
+	margin: -100px auto;
 	text-align: center;
 }
 
@@ -15,6 +15,7 @@ h1{
 	position: relative;
 	top: 160px;
 	font-size: 50px;
+	cursor: pointer;
 }
 
 h2{
@@ -28,7 +29,7 @@ ul{
 }
 
 li {
-	margin: 0px 130px auto;
+	margin: 7px auto;
 	list-style-type: none;
 	padding: 0px 10px;
 }
@@ -57,8 +58,17 @@ a:hover {
 </style>
 </head>
 <body>
-		<h1>INDEX</h1>
+		<h1 href="/">INDEX</h1>
 	<section id="wrapper">
+	<div id="video">
+		<h2>참고 비디오</h2>
+		<br />
+		<ul>
+			<li><a href="https://youtu.be/8a_qIHRDFRU">EL & JSTL - 1</a></li>
+			<li><a href="https://youtu.be/oFcPL6UUyZI">EL & JSTL - 2</a></li>
+		</ul>
+	</div>
+	<br />
 	<div id="Action_EL">
 		<h2>Action & EL</h2>
 		<br />
