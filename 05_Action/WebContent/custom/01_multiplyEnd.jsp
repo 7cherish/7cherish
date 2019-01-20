@@ -16,10 +16,6 @@
 	<h2>CustomAction - JSTL</h2>
 	<!-- 커스텀액션의 이름이 JSTL이다. -->
 	<p>JSTL - JSP Standard Tag Library</p>
-	<p>
-	자바코드와 HTML코드를 섞어서 사용할 때 <br />
-	자바코드를 HTML태그처럼 사용할 수 있도록 지원해 주는 라이브러리 <br />
-	</p>
 	<!-- 1. 변수 선언 -->
 	<!-- 
 		var : 변수명
@@ -33,7 +29,6 @@
 	<c:set var="result" value="${no1 * no2}" scope="request" />
 	
 	<h3>계산</h3>
-	p
 	${no1}와 ${no2}의 곱은? ${result}
 	<br />
 	<c:out value="${no1}" />와

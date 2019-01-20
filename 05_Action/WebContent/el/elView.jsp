@@ -21,15 +21,6 @@
 </head>
 <body>
 	<h2>EL(Expression Language)</h2>
-	<p>표현언어 : 데이터를 화면에 표현하기 위해 만들어진 언어</p>
-	<p>사용법 : ${영역명.변수명}</p>
-	<p>스크립틀릿용어를 대체하기 위해 만들어졌다.</p>
-	<p>
-	pageScope - 각 페이지 영역 <br />
-	requestScope - 각 요청의 영역 <br />
-	sessionScope - 서비스 영역 <br />
-	applicationScope - 웹프로그램 영역 <br />
-	</p>
 	<!-- 
 	EL에서 사용가능한 내장객체
 	괄호로 묶어놓은 스코프는 생략 가능
