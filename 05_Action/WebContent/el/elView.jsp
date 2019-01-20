@@ -36,7 +36,6 @@
 	* (pageScope)
 	* (requestScope) : 서블릿에서 request객체에 속성으로 저장해놨으면,
 					   requestScope 내장객체를 통해서 속성명에 바로 접근이 가능하다.
-
 					   servlet에서 작성한 HttpServletRequest객체가 아니라,
 					   단지 EL에서 만들어서 사용하는 Map객체이다.
 					   HttpServletRequest 속성들만 긁어와서 새로 Map으로 만든 것이다.
