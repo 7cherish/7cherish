@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+		"-//mybatis.org//DTD Config 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- settings 태그 : mybatis 구동 시 선언할 설정들을 작성한다. -->
+	<!-- 
+	실제 데이터가 널인데 그게 그대로 들어가서 에러가 나는 경우가 있는데,
+	널이라면 DB에서 널로 처리하라고 명령하는 것이다.
+	Null 값이 발생할 경우 빈칸이 아닌 null로 인식하라
+	-->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"></setting>
+		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+	</settings>
+	<!--  
+	typeAliases 태그 : mybatis에서 사용할 자료형의 별칭을 선언한다.
+	type에는 패키지 명까지 전부 기술해주어야 한다.
+	-->
+	<typeAliases>
+   <typeAlias type="com.kh.student.model.vo.Student" alias="student"/>
+   </typeAliases>
+	
+<!-- environments 태그 : mybatis 에서 연동할 Database 정보를 등록한다. -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+				<property name="username" value="mybatis"/>
+				<property name="password" value="mybatis"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource = "/mappers/student/student-mapper.xml" />
+	</mappers>
+</configuration>
