@@ -7,15 +7,24 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
+/**
+ * 
+ * @author Gray
+ * 만들어진 설정파일(mybatis-config.xml)을 로드해서 MyBatis객체를 생성한다.
+ * 객체 생성 이후 MyBatis를 이용하여 데이터베이스 처리를 하려면
+ * getSqlSessionFactory() 메소드를 이용하여 객체를 생성하고 API를 호출하여 사용하면 된다.
+ */
 public class SqlSessionTemplate {
 	// SingletonPattern으로 지정
+	
 	public static SqlSession getSqlSession() {
 		SqlSession session = null;
 		String resource = "/mybatis-config.xml"; // 설정파일 위치
 
 		try {
+			// InputStream으로 Mybatis의 설정 정보를 읽어 온다.
 			InputStream is = Resources.getResourceAsStream(resource);// resource라는 스트림을 건내주면 인풋스트림타입으로 돌려준다.
+			// 읽어 온 Mybatis의 설정 정보를 바탕으로 SqlSessionFactoryBuilder를 생성한다.
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder(); // factory객체로 부터
 			// 빌더 클래스에서 공장을 만듦
 			// factory를 짓는 객체 bulid를 하면 공장이 나오고

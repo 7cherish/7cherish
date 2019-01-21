@@ -10,6 +10,7 @@
 	Null 값이 발생할 경우 빈칸이 아닌 null로 인식하라
 	-->
 	<settings>
+        <!-- NULL값 처리-->
 		<setting name="jdbcTypeForNull" value="NULL"></setting>
 		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
 	</settings>
@@ -24,7 +25,9 @@
 <!-- environments 태그 : mybatis 에서 연동할 Database 정보를 등록한다. -->
 	<environments default="development">
 		<environment id="development">
+        <!-- 트랜잭션 관리자를 설정, JDBC를 대체하는 의미에서 type을 JDBC로 지정한다. -->
 			<transactionManager type="JDBC"/>
+            <!-- 데이터베이스 세부 설정 -->
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
 				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
@@ -42,6 +45,7 @@
     클래스패스에 상대적으로 리소스를 지정할 수도 있고 url 을 통해서 지정할 수 도 있다.
     -->
 	<mappers>
+        <!-- SQL을 선언해 둔 XML이나 인터페이스 형태의 Mapper위치를 지정한다. -->
 		<mapper resource = "/mappers/student/student-mapper.xml" />
 	</mappers>
 </configuration>
