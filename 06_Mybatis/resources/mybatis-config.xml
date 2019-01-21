@@ -33,6 +33,14 @@
 			</dataSource>
 		</environment>
 	</environments>
+    <!-- 
+    mappers 태그 : 클래스패스의 상대경로의 리소스 사용 
+    이제 우리는 매핑된 SQL 구문을 정의할 시간이다. 
+    하지만 먼저 설정을 어디에 둘지 결정해야 한다. 
+    자바는 자동으로 리소스를 찾기 위한 좋은 방법을 제공하지 않는다. 
+    그래서 가장 좋은 건 어디서 찾으라고 지정하는 것이다. 
+    클래스패스에 상대적으로 리소스를 지정할 수도 있고 url 을 통해서 지정할 수 도 있다.
+    -->
 	<mappers>
 		<mapper resource = "/mappers/student/student-mapper.xml" />
 	</mappers>

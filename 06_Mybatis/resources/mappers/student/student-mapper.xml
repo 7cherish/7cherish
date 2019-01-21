@@ -2,16 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- mapper파일은 query를 담고 있다. -->
 <mapper namespace="student">
+<!-- 
+    typeAliases를 설정하지 않으면 parameterType에 풀패키지명을 적어야 한다.   
+    <insert id="insertStudent1" parameterType="com.kh.student.vo.Student"> 
+--> 
 	<insert id="insertStudent1" parameterType="student">
 		<!-- 필드명 #{} -->
-		<!-- vo에서 사용하면 필드명을 찾아준다. -->
+		<!-- vo에서 사용하면 필드명에서 찾아온다. -->
 		insert into student values(seq_student_no.nextval, #{studentName},
 														   #{studentTel}, 
 														   #{studentEmail}, 
 														   #{studentAddr}, 
 														   default)
 	</insert>
-	<!-- Map에서 사용하면 키값을 찾아준다. -->
+	<!-- Map에서 사용하면 키값에서 찾아온다. -->
 	<insert id="insertStudent2" parameterType="map">
 		insert into student values(seq_student_no.nextval, #{studentName},
 														   #{studentTel} ,

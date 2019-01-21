@@ -87,8 +87,7 @@ public class DispatcherServlet extends HttpServlet {
 				}
 
 			}
-			System.out.println("최초 생성");
-			System.out.println("cmdMap@DispatcherServlet = " + cmdMap);
+			System.out.println("최초 생성 : cmdMap@DispatcherServlet = " + cmdMap);
 		}
 	}
 
@@ -124,15 +123,17 @@ public class DispatcherServlet extends HttpServlet {
 
 				// 1. redirect
 				if (isRedirct) {
+					// 리다이렉트 할 경우
 					response.sendRedirect(view);
 				}
 
 				// 2. forwarding
 				else if (view != null) {
+					// 포워딩 할 경우
 					request.getRequestDispatcher(view).forward(request, response);
 				}
 
-				// 3. json 등 출력스트림에 쓴 경우
+				// 3. json 등 출력스트림에 직접 쓴 경우
 				else {
 
 				}

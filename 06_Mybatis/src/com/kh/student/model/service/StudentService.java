@@ -10,9 +10,17 @@ import com.kh.student.model.dao.StudentDao;
 import com.kh.student.model.vo.Student;
 
 public class StudentService implements IStudentService {
-	// 인터페이스에서 제어하고 객체만 바꿔주면 밑에서는 동일하게 사용할수 있는 것을 디자인 패턴중 전략패턴이라 한다.
-	// 같은 인터페이스 구현해야할 메소드를 만들지만 a회사 b회사에 맞게 구현
-	// 그럼에도 불구하고 controller에는 변함이 없다.
+	// 인터페이스로써 실제 구현객체를 다루는 것을 디자인 패턴 중 전략패턴이라고 한다.
+	/* cf) 전략패턴이란?
+	 * 알고리즘 인터페이스를 정의하고, 
+	 * 각각의 알고리즘 클래스별로 캡슐화하여 각각의 알고리즘을 교체 사용 가능하게한다.
+	 * 즉, 하나의 결과를 만드는 목적은 동일하나 그 목적을 달성할 수 있는 방법(전략, 알고리즘)이 여러가지 존재할 경우 
+	 * 기본이 되는 가장 많이 사용되는 패턴 중 하나이다.
+	 * 
+	 * ex)
+	 * 같은 인터페이스 구현해야할 메소드를 만들지만 a회사 b회사에 맞게 구현
+	 * 그럼에도 불구하고 controller에는 변함이 없다.
+	 */
 
 	IStudentDao studentDao = new StudentDao();
 
@@ -20,12 +28,17 @@ public class StudentService implements IStudentService {
 	public int insertStudent(Student s) {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		int result = studentDao.insertStudent(session, s);
-
-		// 템플릿에서 오토커밋을 막아놔서 가능한것이다. session = factory.openSession(false);
-		if (result > 0)
+		
+		// 트랜잭션 처리
+		// SqlSessionTemplate에서 autoCommit을 막아놔서 하위 코드를 작성한 의미가 있다. 
+		// session = factory.openSession(false);
+		// true로 하면 무조건 commit된다.
+		if (result > 0) {
 			session.commit();
-		else
+		}
+		else {
 			session.rollback();
+		}
 
 		return result;
 	}
@@ -34,11 +47,14 @@ public class StudentService implements IStudentService {
 	public int insertStudent(Map<String, String> map) {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		int result = studentDao.insertStudent(session, map);
-
-		if (result > 0)
+		
+		// 트랜잭션 처리
+		if (result > 0) {
 			session.commit();
-		else
+		}
+		else {
 			session.rollback();
+		}
 
 		return result;
 	}

@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Student implements Serializable {
-	
-	
+
 	/**
 	 * id값 지정
 	 */
@@ -17,13 +16,13 @@ public class Student implements Serializable {
 	private String studentEmail;
 	private String studentAddr;
 	private Date regDate;
-	
+
 	public Student() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Student(int studentNo, String studentName, String studentTel, String studentEmail, String studentAddr, Date regDate) {
+	public Student(int studentNo, String studentName, String studentTel, String studentEmail, String studentAddr,
+			Date regDate) {
 		super();
 		this.studentNo = studentNo;
 		this.studentName = studentName;
@@ -86,8 +85,5 @@ public class Student implements Serializable {
 		return "[studentNo=" + studentNo + ", studentName=" + studentName + ", studentTel=" + studentTel
 				+ ", studentEmail=" + studentEmail + ", studentAddr=" + studentAddr + ", regDate=" + regDate + "]";
 	}
-	
-	
-	
 
 }
