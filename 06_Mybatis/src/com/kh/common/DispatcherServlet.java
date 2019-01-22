@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DispatcherServlet
  */
+// 보내주는 Servlet
+// 모든 요청을 받아야 하기 때문에 url매핑이 중요하다. 
+// .do확장자를 가진 모든 요청을 처리하겠다.
+// 실제 업무처리는 컨트롤러 클래스가 담당한다.
 @WebServlet("*.do")
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +40,7 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	/**
-	 * WAS구동시 딱 한 번, Servlet 생성시에만 호출된다.
+	 * WAS 구동시 딱 한 번, Servlet 생성시에만 호출된다.
 	 */
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -51,17 +55,30 @@ public class DispatcherServlet extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		/*
+		 * Vector 클래스란?
+		 * 자바에서의 배열(Array)은 고정 길이를 사용하고 있다. 
+		 * 즉 배열이 한번 생성되면 배열의 길이를 늘이거나 줄일 수 없다. 
+		 * 사용자가 배열을 사용할 때 배열의 크기를 벗어나는 인덱스에 접근하려면 에러가 발생한다. 
+		 * 그러므로 사용자는 프로그램에서 배열을 사용할 때 충분한 크기로 설정하여야 한다.
+		 */
+		/*
+		 * Enumeration 인터페이스란?
+		 * Enumeration 인터페이스는 객체들의 집합에서 각각의 객체들을 한순간에 하나씩 처리할 수 있는 메소드를 제공한다.
+		 * boolean hasMoreElements() - 요소가 있으면 true, 없으면 false를 반환
+		 * Object nextElement() - 다음 요소를 반환 
+		 */
+		
 		// 실제 Controller Class객체를 생성 후 Map에 보관
 		Enumeration<Object> keyen = prop.keys(); // 리턴형이 열거형
 		// 키가 몇 개인지 모르겠지만 여러 개라 가정하고, 반복문을 돌린다.
-		// 키가 더 있으면 반복한다.
+		// 요소가 더 있으면 반복한다.
 		while (keyen.hasMoreElements()) {
 			// 리턴형이 Object이므로 String으로 형변환해준다.
 			String key = (String) keyen.nextElement();
 			String className = prop.getProperty(key).trim();
 
-			// 클래스 네임이 널이 아니면서 값이 비어있지 않다면
+			// 클래스 네임이 널이 아니면서 클래스네임 값이 비어있지 않다면
 			if (className != null && !className.isEmpty()) {
 				// 컨트롤러 클래스 객체 생성
 				// 클래스 객체를 먼저 만들어두고 설계도를 보고
@@ -70,6 +87,7 @@ public class DispatcherServlet extends HttpServlet {
 				Object controller = null;
 
 				try {
+					// 클래스 객체에 패키지를 포함한 실제 클래스 이름을 주게 되면 클래스 객체가 만들어지면서 처리된다.
 					cls = Class.forName(className);
 					// 클래스 객체로부터 실제 일반객체를 만드는 방법이
 					// newInstance()로 처리하는 것이다.
@@ -80,7 +98,7 @@ public class DispatcherServlet extends HttpServlet {
 
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
-				} catch (InstantiationException e) {
+				} catch (InstantiationException e) { // 객체화
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
 					e.printStackTrace();

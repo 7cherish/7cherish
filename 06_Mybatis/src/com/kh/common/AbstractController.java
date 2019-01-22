@@ -9,12 +9,13 @@ public abstract class AbstractController {
 	 * 지역변수는 반드시 초기화해서 써야 한다. 
 	 * 그와 달리 힙, 스태틱 영역은 변수를 선언하기만 하면
 	 * 이 데이터 타입에 맞는 0에 해당하는 값을 자동 세팅해준다. 
-	 * 메모리 영역별로 특성이 다르다. 스택은 초기화를 직접 해줘야 하고, 
+	 * 메모리 영역별로 특성이 다르다. 
+	 * 스택은 초기화를 직접 해줘야 하고, 
 	 * 힙이랑 스택은 자동 초기화 된다. 
-	 * 불린에서 0에 해당하는 값이 false이다. 
+	 * 불린은 false, 정수는 0, 실수는 0.0,
 	 * char는 '', 참조형 변수들은 null이다.
 	 */
-	private boolean isRedirect; // 리다이렉트. 기본값 false
+	private boolean isRedirect; // 리다이렉트여부. (포워딩할건지, 리다이렉트할건지) 기본값 false
 	private String view; // 뷰페이지. 기본값 null
 
 	public AbstractController() {
@@ -44,6 +45,7 @@ public abstract class AbstractController {
 	}
 
 	// controller클래스에서 구현해야 할 추상메소드 생성
+	// 이 메소드로 컨트롤러 클래스를 제어할 것이다.
 	public abstract void execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 }
