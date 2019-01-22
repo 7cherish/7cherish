@@ -53,4 +53,29 @@
 		select * from student
 		where student_no = #{student_no}
 	</select>
+	
+	<!-- 학생 리스트 정보를 리턴하는 쿼리 -->
+	<!-- resultType에는 한 행에 담길 것만 챙겨주면 됨. List적으면 안 됨. -->
+	<select id="selectList" resultType="student">
+		select * from student
+		order by student_no desc
+	</select>
+	
+	<!-- 학생 리스트 정보를 Map으로 리턴하는 쿼리 -->
+	<select id="selectMapList" resultMap="studentMap">
+		select * from student
+		order by student_no desc
+	</select>
+	<!-- 위의 select속성의 resultMap에 기입한 값이 resultMap태그의 id와 같아야 한다. -->
+	<resultMap type="map" id="studentMap">
+		<!-- column : DB의 컬럼명 -->
+		<!-- property : 실제 key값으로 사용하게 될 문자 -->
+		<!-- column명이 같을 때는 지정해주지 않아도 된다. -->
+		<!-- <result column="student_no" property="stdtNo" /> -->
+		<!-- <result column="student_name" property="stdtName" />
+		<result column="student_tel" property="stdtTel" />
+		<result column="student_email" property="stdtEmail" />
+		<result column="student_addr" property="stdtAddr" />
+		<result column="reg_date" property="regDate" javaType="java.sql.Date" /> -->
+	</resultMap>
 </mapper>

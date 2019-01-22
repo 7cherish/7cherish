@@ -47,5 +47,6 @@
 	<mappers>
         <!-- SQL을 선언해 둔 XML이나 인터페이스 형태의 Mapper위치를 지정한다. -->
 		<mapper resource = "/mappers/student/student-mapper.xml" />
+		<mapper resource="/mappers/emp/emp-mapper.xml" />
 	</mappers>
 </configuration>

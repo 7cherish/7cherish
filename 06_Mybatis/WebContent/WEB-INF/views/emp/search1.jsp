@@ -11,9 +11,9 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 <html>
 <head>
 <meta charset="UTF-8">
-<title>INDEX</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<a href="/mybatis/student/selectOne.do">/mybatis/student/selectOne.do</a>
+
 </body>
 </html>

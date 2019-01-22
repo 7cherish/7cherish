@@ -1,5 +1,6 @@
 package com.kh.student.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -63,7 +64,24 @@ public class StudentDao implements IStudentDao {
 	public Student selectOneStudent(SqlSession session, int studentNo) {
 		Student s = session.selectOne("student.selectOneStudent", studentNo);
 		System.out.println("s@selectOneStudent@StudentDao = " + s);
+		
 		return s;
+	}
+
+	@Override
+	public List<Student> selectList(SqlSession session) {
+		List<Student> list = session.selectList("student.selectList");
+		System.out.println("list@selectList@StudentDao = " + list);
+		
+		return list;
+	}
+
+	@Override
+	public List<Map<String, String>> selectMapList(SqlSession session) {
+		List<Map<String, String>> mapList = session.selectList("student.selectMapList");
+		System.out.println("mapList@selectList@StudentDao = " + mapList);
+		
+		return mapList;
 	}
 
 }

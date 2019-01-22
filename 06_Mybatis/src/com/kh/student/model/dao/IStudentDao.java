@@ -1,5 +1,6 @@
 package com.kh.student.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,5 +21,9 @@ public interface IStudentDao {
 	int deleteStudentNo(SqlSession session, int studentNo);
 
 	Student selectOneStudent(SqlSession session, int studentNo);
+
+	List<Student> selectList(SqlSession session);
+
+	List<Map<String, String>> selectMapList(SqlSession session);
 
 }
