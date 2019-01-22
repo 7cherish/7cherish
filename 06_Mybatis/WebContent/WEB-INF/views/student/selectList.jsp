@@ -77,12 +77,20 @@ table.tbl-student th, table.tbl-student td{
 				<th>주소</th>
 				<th>등록일</th>
 			</tr>
-			<!-- list가 비어있지 않다면 -->
+			<!-- mapList가 비어있지 않다면 -->
 			<c:if test="${not empty mapList }">
 			<!-- <Map<String, String>> mapList에서 요소를 하나 꺼내온다 => map -->
 			<!-- 키값으로 밸류를 가져올 수 있다. -->
 				<c:forEach var="m" items="${mapList }">
 				<tr>
+<%-- 					
+					<td>${m.stdtNo }</td>
+					<td>${m.stdtName }</td>
+					<td>${m.stdtTel }</td>
+					<td>${m.stdtEmail }</td>
+					<td>${m.stdtAddr }</td>
+					<td>${m.regDate }</td> 
+--%>
 				<!-- 
 				Map은 대소문자를 구분하기 때문에 대문자로 적어준다. 
 				sql은 가리지 않는다. 

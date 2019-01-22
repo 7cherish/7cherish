@@ -20,11 +20,11 @@ public class StudentSelectOneAjaxController extends AbstractController {
 		System.out.println("studentNo@StudentSelectOneAjaxController = " + studentNo);
 		
 		// 2. 비지니스로직 처리
-		Student s = new StudentService().selectOneStudent(studentNo);
+		Student s = new StudentService().selectOneStudent(studentNo); // 전달 받은 studentNo을 넘긴다.
 		
-		
-		// 3. json 쓰기
-		response.setContentType("application/json; charset=utf-8");
+		// 3. 응답객체에 json 쓰기
+		response.setContentType("application/json; charset=utf-8"); // json타입이라 선언.
+		// Student객체를 getWriter객체로 써달라.
 		new Gson().toJson(s, response.getWriter());
 	}
 

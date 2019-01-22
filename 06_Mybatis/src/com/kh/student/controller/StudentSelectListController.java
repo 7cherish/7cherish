@@ -21,15 +21,17 @@ public class StudentSelectListController extends AbstractController {
 		// vo
 		List<Student> list = studentService.selectList();
 		
+		System.out.println("list@StudentSelectListController" + list);
+
 		// Map
 		List<Map<String, String>> mapList = studentService.selectMapList();
 		
-		System.out.println("list@StudentSelectListController" + list);
 		System.out.println("mapList@StudentSelectListController" + mapList);
 		
 		// 2. view단 처리
 		request.setAttribute("list", list);
 		request.setAttribute("mapList", mapList);
+		
 		setView("/WEB-INF/views/student/selectList.jsp");
 	}
 

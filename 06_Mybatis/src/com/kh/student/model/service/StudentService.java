@@ -89,12 +89,9 @@ public class StudentService implements IStudentService {
 	}
 
 	@Override
-	public int deleteStudentNo(int studentNo) {
-		
-		int result = 0;
-		
+	public int deleteStudent(int studentNo) {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
-		result = studentDao.deleteStudentNo(session, studentNo);
+		int result = studentDao.deleteStudent(session, studentNo);
 		
 		// DML이므로 트랜잭션 처리
 		if (result > 0) {
@@ -109,10 +106,10 @@ public class StudentService implements IStudentService {
 		
 		return result;
 	}
-
+	
+	@Override
 	public Student selectOneStudent(int studentNo) {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
-		
 		Student s = studentDao.selectOneStudent(session, studentNo);
 		
 		// 사용한 세션 반납
@@ -124,7 +121,6 @@ public class StudentService implements IStudentService {
 	@Override
 	public List<Student> selectList() {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
-		
 		List<Student> list = studentDao.selectList(session);
 		
 		// 사용한 세션 반납
@@ -135,7 +131,6 @@ public class StudentService implements IStudentService {
 	@Override
 	public List<Map<String, String>> selectMapList() {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
-		
 		List<Map<String, String>> mapList = studentDao.selectMapList(session);
 
 		// 사용한 세션 반납

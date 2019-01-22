@@ -15,7 +15,6 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public List<Map<String, String>> search0() {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
-		
 		List<Map<String, String>> list = empDao.search0(session);
 		
 		// 사용한 세션 반납

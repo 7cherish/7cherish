@@ -20,8 +20,10 @@ public interface IStudentService {
 
 	String selectStudentName(int studentNo);
 
-	int deleteStudentNo(int studentNo);
-
+	int deleteStudent(int studentNo);
+	
+	Student selectOneStudent(int studentNo);
+	
 	List<Student> selectList();
 
 	List<Map<String, String>> selectMapList();

@@ -2,36 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- mapper파일은 query를 담고 있다. -->
 <mapper namespace="emp">
-<!-- 
-    typeAliases를 설정하지 않으면 parameterType에 풀패키지명을 적어야 한다.   
-    <insert id="insertStudent1" parameterType="com.kh.student.vo.Student"> 
---> 
-<!-- 
-    구문의 이름 : insertStudent1, 
-    student타입의 파라미터를 받는다.
-    파라미터에 대한 표기법은 #{파라미터별칭}으로, 
-    Mybatis에게 PreparedStatement를 만들도록 지시하는데, 
-    JDBC에서는 PreparedStatement 내 '?'와 그 쓰임이 동일하다.
- -->
 	<!-- empList정보를 Map으로 리턴하는 쿼리 -->
-	<select id="empList" resultMap="empMap">
+	<select id="search0" resultType="map">
 		select * from kh.employee
 	</select>
-	<!-- 위의 select속성의 resultMap에 기입한 값이 resultMap태그의 id와 같아야 한다. -->
-	<resultMap type="map" id="empMap">
-		<result column="EMP_ID" property="empId" />
-		<result column="EMP_NAME" property="empName" />
-		<result column="EMP_NO" property="empNo" />
-		<result column="EMAIL" property="email" />
-		<result column="PHONE" property="phone" />
-		<result column="DEPT_CODE" property="deptCode" />
-		<result column="JOB_CODE" property="jobCode" />
-		<result column="SAL_LEVEL" property="salLevel" />
-		<result column="SALARY" property="salary" />
-		<result column="BONUS" property="bonus" />
-		<result column="MANAGER_ID" property="managerId" />
-		<result column="HIRE_DATE" property="hireDate" />
-		<result column="QUIT_DATE" property="quitDate" />
-		<result column="QUIT_YN" property="quitYN" />
-	</resultMap>
 </mapper>

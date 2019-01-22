@@ -18,7 +18,7 @@ public interface IStudentDao {
 
 	String selectStudentName(SqlSession session, int studentNo);
 
-	int deleteStudentNo(SqlSession session, int studentNo);
+	int deleteStudent(SqlSession session, int studentNo);
 
 	Student selectOneStudent(SqlSession session, int studentNo);
 

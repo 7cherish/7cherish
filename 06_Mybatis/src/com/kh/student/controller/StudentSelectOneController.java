@@ -14,6 +14,11 @@ public class StudentSelectOneController extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 0. 파라미터 핸들링
+		// 현재 같은 컨트롤러에 요청하고 있는데,
+		// 최초 요청했을때는 stdtNo 파라미터가 없기 때문에 null이 들어간다.
+		// null에 대한 Integer.parseInt를 하면 NumberFormatException이 발생하기 때문에
+		// try/catch절로 처리를 해준다.
+		
 		// studentNo값이 없으면 0이 될 것이다.
 		// 0이거나 사용자 입력값이 들어온다.
 		int studentNo = 0;
@@ -26,7 +31,7 @@ public class StudentSelectOneController extends AbstractController {
 		// 1. 비지니스 로직
 		// a) 전체 학생수 구하기
 		int count = studentService.selectStudentCount();
-		request.setAttribute("count", count);
+		request.setAttribute("count", count); // count라는 속성에 count를 담아준다.
 		
 		// b) 학생번호로 학생이름 가져오기
 		String studentName = "";
@@ -37,6 +42,7 @@ public class StudentSelectOneController extends AbstractController {
 		}
 
 		// 서비스에 다녀왔다면 request에 속성으로 저장
+		// studentName은 0이거나 DB에 가서 구해온 값일 것이다. 또는 해당 학생이 없는 경우.
 		request.setAttribute("studentName", studentName);
 		
 		// 2. view단 처리

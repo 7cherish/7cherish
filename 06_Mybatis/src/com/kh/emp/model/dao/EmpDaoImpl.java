@@ -9,8 +9,8 @@ public class EmpDaoImpl implements EmpDao {
 
 	@Override
 	public List<Map<String, String>> search0(SqlSession session) {
-		List<Map<String, String>> list = session.selectList("emp.empList");
-		System.out.println("mapList@selectList@StudentDao = " + list);
+		List<Map<String, String>> list = session.selectList("emp.search0");
+		System.out.println("list@selectList@EmpDaoImpl = " + list);
 		
 		return list;
 	}

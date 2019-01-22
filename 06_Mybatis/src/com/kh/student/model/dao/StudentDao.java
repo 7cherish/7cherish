@@ -36,16 +36,23 @@ public class StudentDao implements IStudentDao {
 
 	@Override
 	public int selectStudentCount(SqlSession session) {
+		// select를 담당하는 메소드는 2가지가 있다.
+		// selectOne과 selectList
 		// session.selectOne인 이유는 결과값이 하나이기 때문이다.
 		// 즉 하나의 행이라는 것
 		// 학생 한 명의 정보를 읽어오는 것도 selectOne
+		// student : mapper.xml의 네임스페이스
+		// selectStudentCount : 쿼리가 담긴 태그의 id값
 		int count = session.selectOne("student.selectStudentCount");
 		System.out.println("count@selectStudentCount@StudentDao = " + count);
+		
 		return count;
 	}
 
 	@Override
 	public String selectStudentName(SqlSession session, int studentNo) {
+		// 전달할 파라미터가 있다.
+		// <String> String org.apache.ibatis.session.SqlSession.selectOne(String arg0, Object arg1)
 		String studentName = session.selectOne("student.selectStudentName", studentNo);
 		System.out.println("studentName@selectStudentName@StudentDao = " + studentName);
 
@@ -53,11 +60,8 @@ public class StudentDao implements IStudentDao {
 	}
 
 	@Override
-	public int deleteStudentNo(SqlSession session, int studentNo) {
-		int result = session.delete("student.deleteStudent", studentNo);
-		System.out.println("result@deleteStudentNo@StudentDao = " + result);
-
-		return result;
+	public int deleteStudent(SqlSession session, int studentNo) {
+		return session.delete("student.deleteStudent", studentNo);
 	}
 
 	@Override
