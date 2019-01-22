@@ -12,6 +12,7 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 <head>
 <meta charset="UTF-8">
 <title>학생정보검색</title>
+<script src="${pageContext.request.contextPath }/js/jquery-3.3.1.js"></script>
 <style>
 div#student-container{
 	text-align: center;
@@ -39,6 +40,12 @@ table#tbl-student td{
 
 table#tbl-student tr:last-of-type td{
 	text-align: center;
+}
+
+/* 안 보여주다가 성공할때만 보여주기 */
+table#tbl-ajax-student{
+	margin-top: 15px;
+	display: none;
 }
 </style>
 </head>
@@ -79,6 +86,7 @@ table#tbl-student tr:last-of-type td{
 		</c:if>
 		
 		<hr />
+		
 		<form action="${pageContext.request.contextPath }/student/deleteStudent.do">
 			<table id="tbl-student">
 				<tr>
@@ -95,7 +103,59 @@ table#tbl-student tr:last-of-type td{
 			</table>
 		</form>
 		
-	</div>
+		<hr />
+		
+		<h2>ajax를 이용해서 학생 한 명 정보 가져오기</h2>
+		<table id="tbl-student">
+			<tr>
+				<th>학생번호</th>
+				<td>
+					<input type="number" id="ajax-stdtNo" required />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" id="btn-ajax" value="검색" />
+				</td>
+			</tr>
+		</table>
+		<div id="tbl-ajax-student"></div>
 
+	</div>
+<script>
+$("#btn-ajax").on('click', function(){
+	var param = {
+			stdtNo : $("#ajax-stdtNo").val()
+	}
+	$.ajax({
+		url : "${pageContext.request.contextPath}/student/selectOneAjax.do",
+		data : param,
+		type : "get",
+		dataType : "json",
+		success : function(data){
+			console.log("success = ", data);
+			var html;
+			if(data != null){
+				/* JAVA Student 객체의 필드값이 자바스크립트객체의 키값으로 들어와있다. */
+				html += "<tr><th>학생번호</th><td>"+ data.studentNo + "</td></tr>";
+				html += "<tr><th>학생이름</th><td>"+ data.studentName + "</td></tr>";
+				html += "<tr><th>전화번호</th><td>"+ data.studentTel + "</td></tr>";
+				html += "<tr><th>이메일</th><td>"+ data.studentEmail + "</td></tr>";
+				html += "<tr><th>주소</th><td>"+ data.studentAddr + "</td></tr>";
+			}
+			else{
+				html += "<tr><td>조회된 학생이 없습니다.</td></tr>"
+			}
+			$("#tbl-ajax-student").html(html).show();
+		},
+		error : function(jqxhr, textStatus, errorThrown){
+			console.log("ajax 처리 실패!");
+			console.log("jqxhr = ", jqxhr);
+			console.log("textStatus = ", textStatus);
+			console.log("errorThrown = ", errorThrown);
+		}
+	});
+});
+</script>
 </body>
 </html>

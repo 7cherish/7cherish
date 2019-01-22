@@ -109,4 +109,15 @@ public class StudentService implements IStudentService {
 		return result;
 	}
 
+	public Student selectOneStudent(int studentNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		
+		Student s = studentDao.selectOneStudent(session, studentNo);
+		
+		// 사용한 세션 반납
+		session.close();
+		
+		return s;
+	}
+
 }

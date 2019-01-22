@@ -28,7 +28,7 @@ public class StudentDao implements IStudentDao {
 	@Override
 	public int insertStudent(SqlSession session, Map<String, String> map) {
 		int result = session.insert("student.insertStudent2", map);
-		System.out.println("result@StudentDao = " + result);
+		System.out.println("result@insertStudent@StudentDao = " + result);
 
 		return result;
 	}
@@ -39,14 +39,14 @@ public class StudentDao implements IStudentDao {
 		// 즉 하나의 행이라는 것
 		// 학생 한 명의 정보를 읽어오는 것도 selectOne
 		int count = session.selectOne("student.selectStudentCount");
-		System.out.println("count@StudentDao = " + count);
+		System.out.println("count@selectStudentCount@StudentDao = " + count);
 		return count;
 	}
 
 	@Override
 	public String selectStudentName(SqlSession session, int studentNo) {
 		String studentName = session.selectOne("student.selectStudentName", studentNo);
-		System.out.println("studentName@StudentDao = " + studentName);
+		System.out.println("studentName@selectStudentName@StudentDao = " + studentName);
 
 		return studentName;
 	}
@@ -54,9 +54,16 @@ public class StudentDao implements IStudentDao {
 	@Override
 	public int deleteStudentNo(SqlSession session, int studentNo) {
 		int result = session.delete("student.deleteStudent", studentNo);
-		System.out.println("deleteStudentNo@StudentDao = " + result);
+		System.out.println("result@deleteStudentNo@StudentDao = " + result);
 
 		return result;
+	}
+
+	@Override
+	public Student selectOneStudent(SqlSession session, int studentNo) {
+		Student s = session.selectOne("student.selectOneStudent", studentNo);
+		System.out.println("s@selectOneStudent@StudentDao = " + s);
+		return s;
 	}
 
 }

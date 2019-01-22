@@ -40,11 +40,17 @@
 	<select id="selectStudentName" parameterType="_int" resultType="string">
 		select student_name
 		from student
-		where student_no = #{studentNo}
+		where student_no = #{stdtNo}
 	</select>
 	
 	<!--  학생번호로 학생을 삭제하는 쿼리 -->
 	<delete id="deleteStudent" parameterType="_int">
-		delete from student where student_no = #{studentNo}
+		delete from student where student_no = #{stdtNo}
 	</delete>
+	
+	<!-- 학생 한명의 정보를 가져오는 쿼리 -->
+	<select id="selectOneStudent" parameterType="_int" resultType="student">
+		select * from student
+		where student_no = #{student_no}
+	</select>
 </mapper>
