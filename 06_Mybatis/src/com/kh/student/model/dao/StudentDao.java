@@ -19,7 +19,7 @@ public class StudentDao implements IStudentDao {
 		// Object arg1은 없거나 하나만 가져온다.
 		// 여러 개를 넘기고 싶으면 Map에 담아서 하나의 객체만 넘겨야 한다.
 		// student = mapper의 namespace
-		// insertStudent = insert태그의 id
+		// insertStudent1 = insert태그의 id
 		int result = session.insert("student.insertStudent1", s);
 
 		return result;
@@ -28,6 +28,33 @@ public class StudentDao implements IStudentDao {
 	@Override
 	public int insertStudent(SqlSession session, Map<String, String> map) {
 		int result = session.insert("student.insertStudent2", map);
+		System.out.println("result@StudentDao = " + result);
+
+		return result;
+	}
+
+	@Override
+	public int selectStudentCount(SqlSession session) {
+		// session.selectOne인 이유는 결과값이 하나이기 때문이다.
+		// 즉 하나의 행이라는 것
+		// 학생 한 명의 정보를 읽어오는 것도 selectOne
+		int count = session.selectOne("student.selectStudentCount");
+		System.out.println("count@StudentDao = " + count);
+		return count;
+	}
+
+	@Override
+	public String selectStudentName(SqlSession session, int studentNo) {
+		String studentName = session.selectOne("student.selectStudentName", studentNo);
+		System.out.println("studentName@StudentDao = " + studentName);
+
+		return studentName;
+	}
+
+	@Override
+	public int deleteStudentNo(SqlSession session, int studentNo) {
+		int result = session.delete("student.deleteStudent", studentNo);
+		System.out.println("deleteStudentNo@StudentDao = " + result);
 
 		return result;
 	}

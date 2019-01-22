@@ -13,4 +13,10 @@ public interface IStudentDao {
 
 	int insertStudent(SqlSession session, Map<String, String> map);
 
+	int selectStudentCount(SqlSession session);
+
+	String selectStudentName(SqlSession session, int studentNo);
+
+	int deleteStudentNo(SqlSession session, int studentNo);
+
 }

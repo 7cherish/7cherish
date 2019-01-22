@@ -55,13 +55,7 @@ public class DispatcherServlet extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * Vector 클래스란?
-		 * 자바에서의 배열(Array)은 고정 길이를 사용하고 있다. 
-		 * 즉 배열이 한번 생성되면 배열의 길이를 늘이거나 줄일 수 없다. 
-		 * 사용자가 배열을 사용할 때 배열의 크기를 벗어나는 인덱스에 접근하려면 에러가 발생한다. 
-		 * 그러므로 사용자는 프로그램에서 배열을 사용할 때 충분한 크기로 설정하여야 한다.
-		 */
+
 		/*
 		 * Enumeration 인터페이스란?
 		 * Enumeration 인터페이스는 객체들의 집합에서 각각의 객체들을 한순간에 하나씩 처리할 수 있는 메소드를 제공한다.
@@ -105,8 +99,8 @@ public class DispatcherServlet extends HttpServlet {
 				}
 
 			}
-			System.out.println("최초 생성 : cmdMap@DispatcherServlet = " + cmdMap);
 		}
+		System.out.println("최초 생성 : cmdMap@DispatcherServlet.init = " + cmdMap);
 	}
 
 	/**

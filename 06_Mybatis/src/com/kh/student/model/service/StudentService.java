@@ -39,6 +39,9 @@ public class StudentService implements IStudentService {
 		else {
 			session.rollback();
 		}
+		
+		// 사용한 세션 반납
+		session.close();
 
 		return result;
 	}
@@ -48,7 +51,7 @@ public class StudentService implements IStudentService {
 		SqlSession session = SqlSessionTemplate.getSqlSession();
 		int result = studentDao.insertStudent(session, map);
 		
-		// 트랜잭션 처리
+		// DML이므로 트랜잭션 처리
 		if (result > 0) {
 			session.commit();
 		}
@@ -56,6 +59,53 @@ public class StudentService implements IStudentService {
 			session.rollback();
 		}
 
+		return result;
+	}
+
+	@Override
+	public int selectStudentCount() {
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		int count = studentDao.selectStudentCount(session);
+		
+		// 사용한 세션은 반드시 반납해줘야 한다.
+		// 사용한 세션 반납
+		session.close();
+		
+		return count;
+	}
+
+	@Override
+	public String selectStudentName(int studentNo) {
+		String studentName = "";
+		
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		studentName = studentDao.selectStudentName(session, studentNo);
+		
+		// 사용한 세션 반납
+		session.close();
+		
+		return studentName;
+	}
+
+	@Override
+	public int deleteStudentNo(int studentNo) {
+		
+		int result = 0;
+		
+		SqlSession session = SqlSessionTemplate.getSqlSession();
+		result = studentDao.deleteStudentNo(session, studentNo);
+		
+		// DML이므로 트랜잭션 처리
+		if (result > 0) {
+			session.commit();
+		}
+		else {
+			session.rollback();
+		}
+		
+		// 사용한 세션 반납
+		session.close();
+		
 		return result;
 	}
 

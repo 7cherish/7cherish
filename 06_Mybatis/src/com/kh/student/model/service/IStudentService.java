@@ -15,6 +15,12 @@ public interface IStudentService {
 
 	int insertStudent(Map<String, String> map);
 
+	int selectStudentCount();
+
+	String selectStudentName(int studentNo);
+
+	int deleteStudentNo(int studentNo);
+
 	
 	
 }

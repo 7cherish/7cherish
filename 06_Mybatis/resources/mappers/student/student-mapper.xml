@@ -30,4 +30,21 @@
 														   #{studentAddr}, 
 														   default)
 	</insert>
+	<!-- 학생총인원수를 구하는 쿼리 -->
+	<!-- resultType을 반드시 명시 -->
+	<select id="selectStudentCount" resultType="_int">
+		select count(*) from student
+	</select>
+	
+	<!-- 학생번호로 학생이름을 구하는 쿼리 -->
+	<select id="selectStudentName" parameterType="_int" resultType="string">
+		select student_name
+		from student
+		where student_no = #{studentNo}
+	</select>
+	
+	<!--  학생번호로 학생을 삭제하는 쿼리 -->
+	<delete id="deleteStudent" parameterType="_int">
+		delete from student where student_no = #{studentNo}
+	</delete>
 </mapper>
