@@ -37,50 +37,14 @@ div#search-container {
 	padding: 15px 0;
 }
 
-div#search-container form select {
-	vertical-align: middle;
-}
-
-input#btn-search {
-	width: 350px;
-	background: #ff0057;
-	opacity: 0.5;
-	color: white;
-	box-shadow: 0px 3px 15px grey;
-}
-
-table#tbl-search {
-	margin: 0 auto;
-}
-
-table#tbl-search th, table#tbl-search td {
-	padding: 5px 15px;
-}
-
-table#tbl-search td {
-	text-align: left;
+div#search-container form select{
+   vertical-align: middle;
 }
 </style>
 </head>
 <body>
 	<div id="emp-container">
-		<h2>사원정보</h2>
-		<div id="search-container">
-			<!-- 
-			웬만한 검색기능은 
-			사용자가 공유할수도 있으므로 get방식으로 하는 것이 좋다.
-			-->
-			<form action="${pageContext.request.contextPath }/emp/search1.do">
-				<select name="searchType" required>
-					<option value="emp_id" <c:if test="${'emp_id' eq param.searchType}">selected</c:if>>사번</option>
-					<option value="emp_name" ${'emp_name' eq param.searchType?"selected":"" }>사원명</option>
-					<option value="email" ${"email".equals(param.searchType)?"selected":""}>이메일</option>
-					<option value="phone" ${"phone" == param.searchType?"selected":"" }>전화번호</option>
-				</select> 
-				<input type="search" name="searchKeyword" required />
-				<input type="submit" value="검색" />
-			</form>
-		</div>
+		<h2>사원정보(paging)</h2>
 
 		<table class="tbl-emp">
         <tr>

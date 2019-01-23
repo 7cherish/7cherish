@@ -12,6 +12,14 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 <head>
 <meta charset="UTF-8">
 <title>INDEX</title>
+<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
+<!-- <script type="text/javascript" src="/js/jquery.gdocsviewer.min.js"></script> -->
+<script>
+function showPdf(n){
+	$(".pdf").eq(n-1).toggle();
+}
+
+</script>
 <style>
 body{
 	margin: 0 auto;
@@ -28,6 +36,28 @@ a{
 a:hover{
 	color: red;
 }
+
+.pdf{
+	width: 90%;
+	min-height: 500px;
+	display: none;
+}
+
+.label{
+	font-size: 20px;
+	display: block;
+	cursor: pointer;
+	border: 1px solid;
+	border-radius: 10px 10px 10px 10px;
+	width: 400px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.label:hover{
+	background: #48d2f9;
+}
 </style>
 </head>
 <body>
@@ -38,7 +68,22 @@ a:hover{
 	<a href="http://localhost:9090/mybatis/student/selectList.do">학생리스트 : selectList.do</a>
 	<hr />
 	<h2>emp</h2>
-	<a href="http://localhost:9090/mybatis/emp/search1.do">search1.do</a>
-	
+	<a href="http://localhost:9090/mybatis/emp/search1.do">사원정보 : search1.do</a>
+	<a href="http://localhost:9090/mybatis/emp/search2.do">사원정보2 : search2.do</a>
+	<a href="http://localhost:9090/mybatis/emp/search3.do">사원정보3 : search3.do</a>
+	<a href="http://localhost:9090/mybatis/emp/empPagedList.do">사원정보(paging) : empPagedList.do</a>
+	<hr />
+	<h2>PDF</h2>
+	<label for="pdf" class="label" onclick="showPdf(1);">1_Framework.pdf</label>
+	<iframe id="framework" name="pdf" class="pdf" src="./수업자료/pdf/1_Framework.pdf"></iframe>
+	<br />
+	<label for="pdf" class="label" onclick="showPdf(2);">2_Mybatis.pdf</label>
+	<iframe id="mybatis" name="pdf" class="pdf" src="./수업자료/pdf/2_Mybatis.pdf"></iframe>
+	<br />
+	<label for="pdf" class="label" onclick="showPdf(3);">3_Mybatis-동적쿼리.pdf</label>
+	<iframe id="mybatis-query" name="pdf" class="pdf" src="./수업자료/pdf/3_Mybatis-동적쿼리.pdf"></iframe>
+	<!-- <iframe src="http://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(file) + '" width="' + settings.width + '" height="' + settings.height + '" style="border: none;"></iframe> -->
+
+
 </body>
 </html>

@@ -213,14 +213,14 @@ select * from kh.job;
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 mvc model2의 진화버전
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-Servlet(Dispatcher Servlet @WebServlet("*.do"))을 하나 만들어놨더니 편해졌다.
-처리해야할 요청url하고 컨트롤러만 command.properties에 적어주고
-Controller Class 작성
-Service단 interface 작성
-Service단 실제 구현 Class 작성
-Dao interface 작성
-Dao 실제 구현 Class 작성
-mapper.xml
+1. Servlet(Dispatcher Servlet @WebServlet("*.do"))을 하나 만들어놨더니 편해졌다.
+2. 처리해야할 요청url하고 컨트롤러만 command.properties에 적어주고
+3. Controller Class 작성
+4. Service단 interface 작성
+5. Service단 실제 구현 Class 작성
+6. Dao interface 작성
+7. Dao 실제 구현 Class 작성
+8. mapper.xml
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 command.properties
@@ -228,7 +228,7 @@ command.properties
 여기에 실제 사용자의 요청주소와 이것을 처리할 컨트롤러 클래스를 키와 밸류값으로 연결지어놓는것이다.
 이 정보를 읽어다가 DispatcherServlet에서 연결시킨다.
 key : /student/studentEnroll.do (사용자 요청주소)
-value : com.kh.student.controller.StudentEnrollController
+value : com.kh.student.controller.StudentEnrollController (패키지 경로)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 StudentDao
@@ -256,4 +256,14 @@ JDBC에서 PreparedStatement 넣을 때 데이터는 동적으로 넣을 수 있
 
 Mybatis는 컬럼명도 동적으로 생성해준다.
 쿼리 안에서 조건문을 처리 할 수 있다.
+
+데이터는 #, 컬럼은 $
+
+조건절을 만들 때 어느 것이 빠져도 문제 없도록 작성 할 것!
+
+비교연산자를 사용할때는 태그로 인식해서 오류가 발생하지 않도록
+<![CDATA[부등호]]>로 감싸줘야 한다.
+
+컨텐츠 영역을 처리하는데 간단한 rowBounds를 제공한다.
+rowNum해서 between ? and ? 하던게 사라진다.
 

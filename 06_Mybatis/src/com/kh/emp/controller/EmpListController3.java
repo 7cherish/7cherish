@@ -11,7 +11,7 @@ import com.kh.common.AbstractController;
 import com.kh.emp.model.service.EmpService;
 import com.kh.emp.model.service.EmpServiceImpl;
 
-public class EmpListController extends AbstractController {
+public class EmpListController3 extends AbstractController {
 	// 1. Student에서는 IStudentService(인터페이스명)하고 StudentService(실제 구현 클래스) 로 했었다.
 	// 2. 또 다른 스타일은 StudentService(인터페이스명) StudentServiceImpl(실제 구현 클래스) 가 있다.
 	EmpService empService = new EmpServiceImpl();
@@ -19,30 +19,31 @@ public class EmpListController extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 0. 파라미터 핸들링
-		String searchType = request.getParameter("searchType");
-		String searchKeyword = request.getParameter("searchKeyword");
+		// 체크박스이므로 배열로 받아야 한다.
+		// 조건에 따라 나를때만 배열 사용
+		String[] jobCodeArr = request.getParameterValues("jobCode");
+		String[] deptCodeArr = request.getParameterValues("dept_code");
+
 		
-		Map<String, String> map = new HashMap<>();
-		map.put("searchType", searchType);
-		map.put("searchKeyword", searchKeyword);
-		System.out.println("map@searchType, searchKeyword" + map);
+		
+		Map<String, String[]> map = new HashMap<>();
+		map.put("jobCodeArr", jobCodeArr);
+		map.put("deptCodeArr", deptCodeArr);
+		
+		System.out.println("map@jobCodeArr@EmpListController3 = " + map);
 		
 		// 1. 업무로직
 		// Map으로 처리
 		// serach0은 검색 기능 제거하고 기본이 될 것이다.
-		List<Map<String, String>> list = null;
-		if(searchType == null || searchKeyword == null) {
-			list = empService.search0();
-			System.out.println("list@search0@EmpListController = " + list);
-		} else {
-			list = empService.search1(map);
-			System.out.println("list@search1@EmpListController = " + list);
-		}
+		// 돌려받는건 String, String
+		List<Map<String, String>> list = empService.search3(map);
+
+		System.out.println("list@EmpListController3 = " + list);
 
 		// 2. view단
 		request.setAttribute("list", list);
 		
-		setView("/WEB-INF/views/emp/search1.jsp");
+		setView("/WEB-INF/views/emp/search3.jsp");
 	}
 
 }
