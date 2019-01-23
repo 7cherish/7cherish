@@ -6,4 +6,90 @@
 	<select id="search0" resultType="map">
 		select * from kh.employee
 	</select>
+	
+	<!-- 컬럼과 키워드로 검색 -->
+	<!-- 데이터는 #, 컬럼은 $ -->
+	<select id="search1" resultType="map">
+		select *
+		from kh.employee
+		where ${searchType} like '%' || #{searchKeyword} || '%'
+	</select>
+	
+	<!-- 컬럼/키워드 검색과 성별 검색 병행하기 -->
+	<!-- 파라미터타입은 생략가능. 알아서 유추해줌 -->
+	<select id="search2" resultType="map">
+		select *
+		from(
+		select A.*,
+		decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
+		from kh.employee A)
+		where 1=1 
+		<if test="searchType != null and searchType != ''">
+			and ${searchType} like '%' || #{searchKeyword} || '%'
+		</if>
+		<if test="gender != null and gender != ''">
+			and gender = #{gender}
+		</if>
+		<if test="salary != null and salary != ''">
+			<if test="salaryFlag eq 'ge'">
+				and salary <![CDATA[>=]]> #{salary}
+			</if>
+			<if test="salaryFlag eq 'le'">
+				and salary <![CDATA[<=]]> #{salary}
+			</if>
+		</if>
+	</select>
+
+	<!-- 직급코드배열을 받아서 in절로 질의하는 쿼리 -->
+	<!-- 직급코드로 조회하지만 결국 직급명도 필요하기 때문에 join해서 사용해야 한다. -->
+<!-- 	<select id="search3" resultType="map">
+		select A.*, B.job_name
+		from kh.employee A
+			left join kh.job B on A.job_code = B.job_code
+		아무 직급코드도 선택하지 않았을 경우 처리
+		where 1=1
+		<if test="jobCodeArr != null">
+			and A.job_code in
+			collection : 반복에 쓰일 Collection 객체. 배열, List들
+			item : 반복 될 때 접근 가능한 각 객체 변수
+			open : 첫 반복 시 포함할 여는 문자열 ex) '(' abc, efg, … )
+			close : 마지막 반복 시 포함할 닫는 문자열 ex) ( abc, efg, … ')'
+			separator : 반복되는 객체를 나열할 때 사용할 구분자 ex) ( abc ',' … )
+			<foreach collection="jobCodeArr" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
+	</select> -->
+	<select id="search3" resultType="map">
+		select v.* , B.job_name, decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
+		from(
+		select A.* , D.dept_TITLE , nvl(D.dept_id, 'D0') AS dept_id
+		from kh.employee A
+		left join kh.department D on
+		A.dept_code = D.dept_id ) v left join kh.job B on v.job_code = B.job_code
+		where 1=1
+		<if test="jobCodeArr != null">
+			and v.job_code in
+			<!-- 반복에 쓰일 Collection 객체. 배열, List들 -->
+			<!-- jobCodeArr 안에 있는 각 요소가 item에 담김 -->
+			<foreach collection="jobCodeArr" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
+
+		<if test="deptCodeArr!=null">
+			and v.dept_id in
+			<!-- 반복에 쓰일 Collection 객체. 배열, List들 -->
+			<!-- jobCodeArr 안에 있는 각 요소가 item에 담김 -->
+			<foreach collection="deptCodeArr" item="item" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+	
+	<!-- rowBounds를 이용한 페이징 -->
+	<select id="empPagedList" resultType="map">
+		select * from kh.employee
+		order by emp_id
+	</select>
 </mapper>
