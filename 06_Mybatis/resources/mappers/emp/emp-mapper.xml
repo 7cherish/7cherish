@@ -68,9 +68,9 @@
 	</select> 
 -->
 	<select id="search3" resultType="map">
-		select v.* , B.job_name, decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
+		select v.*, B.job_name, decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
 		from(
-			select A.* , D.dept_TITLE , nvl(D.dept_id, 'D0') as dept_id
+			select A.*, D.dept_TITLE, nvl(D.dept_id, 'D0') as dept_id <!-- nvl : 어떤 컬럼이 Null이면 특정 값으로 치환 -->
 			from kh.employee A 
 				left join kh.department D on A.dept_code = D.dept_id 
 			) v 
@@ -85,7 +85,7 @@
 			</foreach>
 		</if>
 
-		<if test="deptCodeArr!=null">
+		<if test="deptCodeArr != null">
 			and v.dept_id in
 			<!-- 반복에 쓰일 Collection 객체. 배열, List들 -->
 			<!-- jobCodeArr 안에 있는 각 요소가 item에 담김 -->
