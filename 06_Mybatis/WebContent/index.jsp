@@ -68,7 +68,10 @@ a:hover{
 	<a href="http://localhost:9090/mybatis/student/selectList.do">학생리스트 : selectList.do</a>
 	<hr />
 	<h2>emp</h2>
-	<a href="http://localhost:9090/mybatis/emp/empList.do">empList.do</a>
+	<a href="http://localhost:9090/mybatis/emp/search1.do">사원정보 : search1.do</a>
+	<a href="http://localhost:9090/mybatis/emp/search2.do">사원정보2 : search2.do</a>
+	<a href="http://localhost:9090/mybatis/emp/search3.do">사원정보3 : search3.do</a>
+	<a href="http://localhost:9090/mybatis/emp/empPagedList.do">사원정보(paging) : empPagedList.do</a>
 	<hr />
 	<h2>PDF</h2>
 	<label for="pdf" class="label" onclick="showPdf(1);">1_Framework.pdf</label>
