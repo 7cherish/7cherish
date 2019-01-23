@@ -22,7 +22,8 @@ public class EmpListController2 extends AbstractController {
 		String searchType = request.getParameter("searchType");
 		String searchKeyword = request.getParameter("searchKeyword");
 		String gender = request.getParameter("gender");
-		String salary = request.getParameter("salary");
+		// 샐러리 받아서 맵에 넣으면 스트링되므로 형변환 안 함
+		String salary = request.getParameter("salary"); 
 		String salaryFlag = request.getParameter("salaryFlag");
 		
 		

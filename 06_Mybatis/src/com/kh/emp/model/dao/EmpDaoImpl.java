@@ -45,9 +45,9 @@ public class EmpDaoImpl implements EmpDao {
 		// new RowBounds(int offset, int limit)
 		// offset : 건너 뛸 게시물 수
 		// cPage(현재 페이지)가 1이라면 -> offset : 0
-		// cPage(현재 페이지)가 2이라면 -> numPerPage * 1
-		// cPage(현재 페이지)가 3이라면 -> numPerPage * 2
-		// limit : numPerPage
+		// cPage(현재 페이지)가 2이라면 -> offset : numPerPage * 1
+		// cPage(현재 페이지)가 3이라면 -> offset : numPerPage * 2
+		// limit : numPerPage(보여줄 컨텐츠 수)
 		RowBounds rowBounds = new RowBounds((cPage - 1) * numPerPage, numPerPage);
 		
 		List<Map<String, String>> list = session.selectList("emp.empPagedList", null, rowBounds);

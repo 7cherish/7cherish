@@ -16,14 +16,14 @@ uri : c.tld파일의 uri와 일치하도록 할 것
 	List<String> deptList = null;
 	/* 잡코드를 아무것도 입력하지 않으면 null이기 때문에 조건 추가 */
 	if(jobCodeArr != null){
+		/* 배열을 리스트로 리턴해주는 Arrays.asList() */
 		jobList = Arrays.asList(jobCodeArr);
 	}
 	
 	if(deptCodeArr != null){
+		/* 배열을 리스트로 리턴해주는 Arrays.asList() */
 		deptList = Arrays.asList(deptCodeArr);
 	}
-	
-	
 	
 	/* el로 처리하기 위해 pageContext에 속성으로 저장한다. */
 	pageContext.setAttribute("jobList", jobList);
@@ -102,6 +102,7 @@ table#tbl-search td {
 					<tr>
 						<th>직급</th>
 						<td>
+							<!-- jobList가 null이 아니면서 jobList가 J1이라는 값을 가지고 있으면 체크 -->
 							<input type="checkbox" name="jobCode" id="j1" value="J1" ${jobList != null && jobList.contains('J1')?'checked':'' } />
 							<label for="j1">대표</label>
 							<input type="checkbox" name="jobCode" id="j2" value="J2" ${jobList != null && jobList.contains('J2')?'checked':'' } />

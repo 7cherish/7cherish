@@ -24,8 +24,7 @@ public class EmpListController3 extends AbstractController {
 		String[] jobCodeArr = request.getParameterValues("jobCode");
 		String[] deptCodeArr = request.getParameterValues("dept_code");
 
-		
-		
+		// 이번에는 key : String, value : String[]
 		Map<String, String[]> map = new HashMap<>();
 		map.put("jobCodeArr", jobCodeArr);
 		map.put("deptCodeArr", deptCodeArr);

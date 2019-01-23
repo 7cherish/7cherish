@@ -99,11 +99,22 @@ table#tbl-search td {
             <th>입사일</th>
         </tr>
         <c:if test="${not empty list}">
+        <!-- items : 반복할 수 있는 여지가 있는 객체 -->
+        <!-- var : 반복하는동안 사용할 변수 -->
+        <!-- varStatus : 실제 반복문의 인덱스값(0부터 시작), 카운트값(1부터 시작) 접근 가능 -->
         <c:forEach var="e" items="${list}"  varStatus="vs">
             <tr>
+            	<!-- 실제 DB에 적혀있는게 아니고 view단에 찍을 용도 -->
                 <td>${vs.count}</td>
+                <!-- 1. .연산자로 key값 작성 2. []에 문자열로 key값 작성 -->
                 <td>${e["EMP_ID"]}</td>
                 <td>${e["EMP_NAME"]}</td>
+                <!-- 
+                커스텀 태그의 substring
+                1번째 인자 : 대상 문자열 
+                2번째 인자 : 시작 
+                3번째 인자 : 끝 
+                -->
                 <td>${fn:substring(e["EMP_NO"], 0, 8).concat("******")}</td>
                 <td>${e["EMAIL"]}</td>
                 <td>${e["PHONE"]}</td>

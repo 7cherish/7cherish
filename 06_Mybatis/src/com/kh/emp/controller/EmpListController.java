@@ -22,14 +22,20 @@ public class EmpListController extends AbstractController {
 		String searchType = request.getParameter("searchType");
 		String searchKeyword = request.getParameter("searchKeyword");
 		
+		// 이전에 했던 방식은 Dao SqlSession에 작성하고
+		// 1번째 인자 : mapper.xml의 쿼리를 찾기 위해서 namespace.쿼리 id 전달
+		// 2번째 인자 : 없거나 1개했었는데 (여러 개 안 됨)
+		
+		// 현재는 인자를 2개 전달해야 하기 때문에 Map으로 전달해야 한다.
 		Map<String, String> map = new HashMap<>();
 		map.put("searchType", searchType);
 		map.put("searchKeyword", searchKeyword);
-		System.out.println("map@searchType, searchKeyword" + map);
+		System.out.println("map@searchType, searchKeyword@EmpListController = " + map);
 		
 		// 1. 업무로직
 		// Map으로 처리
 		// serach0은 검색 기능 제거하고 기본이 될 것이다.
+		// 결과값 받을 list를 우선 null로 초기화 해준다.
 		List<Map<String, String>> list = null;
 		if(searchType == null || searchKeyword == null) {
 			list = empService.search0();

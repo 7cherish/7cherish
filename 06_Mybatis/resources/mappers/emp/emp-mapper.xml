@@ -17,12 +17,16 @@
 	
 	<!-- 컬럼/키워드 검색과 성별 검색 병행하기 -->
 	<!-- 파라미터타입은 생략가능. 알아서 유추해줌 -->
+	<!-- 
+	쿼리내부에서 비교연산자(부등호)를 사용할때는 태그로 인식하기 때문에
+	오류가 발생하지 않도록 <![CDATA[부등호(쿼리)]]>로 감싸 부등호로 인식시켜줘야 한다.
+	 -->
 	<select id="search2" resultType="map">
 		select *
 		from(
-		select A.*,
-		decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
-		from kh.employee A)
+			select A.*,
+			decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
+			from kh.employee A)
 		where 1=1 
 		<if test="searchType != null and searchType != ''">
 			and ${searchType} like '%' || #{searchKeyword} || '%'
@@ -32,6 +36,7 @@
 		</if>
 		<if test="salary != null and salary != ''">
 			<if test="salaryFlag eq 'ge'">
+			<!--  -->
 				and salary <![CDATA[>=]]> #{salary}
 			</if>
 			<if test="salaryFlag eq 'le'">
@@ -42,7 +47,8 @@
 
 	<!-- 직급코드배열을 받아서 in절로 질의하는 쿼리 -->
 	<!-- 직급코드로 조회하지만 결국 직급명도 필요하기 때문에 join해서 사용해야 한다. -->
-<!-- 	<select id="search3" resultType="map">
+<!--
+	 	<select id="search3" resultType="map">
 		select A.*, B.job_name
 		from kh.employee A
 			left join kh.job B on A.job_code = B.job_code
@@ -59,14 +65,16 @@
 				#{item}
 			</foreach>
 		</if>
-	</select> -->
+	</select> 
+-->
 	<select id="search3" resultType="map">
 		select v.* , B.job_name, decode(substr(emp_no, 8, 1), 1, '남', 3, '남', '여') gender
 		from(
-		select A.* , D.dept_TITLE , nvl(D.dept_id, 'D0') AS dept_id
-		from kh.employee A
-		left join kh.department D on
-		A.dept_code = D.dept_id ) v left join kh.job B on v.job_code = B.job_code
+			select A.* , D.dept_TITLE , nvl(D.dept_id, 'D0') as dept_id
+			from kh.employee A 
+				left join kh.department D on A.dept_code = D.dept_id 
+			) v 
+				left join kh.job B on v.job_code = B.job_code
 		where 1=1
 		<if test="jobCodeArr != null">
 			and v.job_code in
